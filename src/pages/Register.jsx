@@ -1,14 +1,12 @@
 import { useState } from "react";
-import "./Register.css";
 
 function Register() {
 
-  const [name,setName] = useState("");
-  const [email,setEmail] = useState("");
-  const [password,setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
-
     e.preventDefault();
 
     let users = JSON.parse(localStorage.getItem("users")) || [];
@@ -27,49 +25,49 @@ function Register() {
   };
 
   return (
+    <div>
 
-    <div className="register-container">
+      <h2>User Registration</h2>
 
-      <div className="register-card">
+      <form onSubmit={handleSubmit}>
 
-        <h2>User Registration</h2>
+        <input
+          type="text"
+          placeholder="Enter Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
 
-        <form onSubmit={handleSubmit}>
+        <br /><br />
 
-          <input
-            type="text"
-            placeholder="Enter Name"
-            value={name}
-            onChange={(e)=>setName(e.target.value)}
-            required
-          />
+        <input
+          type="email"
+          placeholder="Enter Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-          <input
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(e)=>setEmail(e.target.value)}
-            required
-          />
+        <br /><br />
 
-          <input
-            type="password"
-            placeholder="Enter Password"
-            value={password}
-            onChange={(e)=>setPassword(e.target.value)}
-            required
-          />
+        <input
+          type="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
-          <button className="register-btn">
-            Register
-          </button>
+        <br /><br />
 
-        </form>
+        <button>
+          Register
+        </button>
 
-      </div>
+      </form>
 
     </div>
-
   );
 }
 
